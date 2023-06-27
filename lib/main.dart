@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,12 +11,39 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(primaryColor: const Color.fromARGB(255, 241, 231, 143)),
+      home: const HomePage(),
     );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+            leading: IconButton(
+              icon: const Icon(Icons.ac_unit),
+              onPressed: () {
+                // print("Object");
+                log("OJ");
+              },
+            ),
+            title: const Text("The first Flutter App")),
+        body: const Center(
+          child: Text(
+            "How are you ? How have been yours family ? Well done ! ",
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              fontSize: 32,
+              fontWeight: FontWeight.bold,
+              color: Colors.red,
+            ),
+          ),
+        ));
   }
 }
